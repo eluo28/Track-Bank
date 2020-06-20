@@ -1,5 +1,6 @@
 {
     "mongoURI": "mongodb+srv://eluo28:koala28*@sstudio-cej3e.mongodb.net/test?retryWrites=true&w=majority",
-    "jwtSecret":"sl_myJwtSecret"
-
+    "jwtSecret":"sl_myJwtSecret",
+    "AWS_ACCESS_KEY_ID":"AKIAJF6FNQQ6CENJUXAA",
+    "AWS_SECRET_ACCESS_KEY":"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"
 }

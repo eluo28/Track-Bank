@@ -12,14 +12,31 @@ const ItemSchema = new Schema({
         type:Date,
         default:Date.now
     },
+    producer:{
+        type:String,
+        required:true,
+    },
     description:{
-        type:String
+        type:String,
+        required:true,
     },
-    lyrics:{
-        type:String
+    coverImage:{
+        type:String,
+        required:true
     },
+
+    audioFile:{
+        type:String,
+        required:true
+    },
+    audioFileKey:{
+        type:String,
+        required:true
+    }
 
 });
 
+
 module.exports = Item = mongoose.model('item',ItemSchema);
+
 
