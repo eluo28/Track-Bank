@@ -1,0 +1,53 @@
+.remove-btn{
+  margin-right:.5rem;
+ 
+}
+
+.fade-enter{
+  opacity:.01;
+}
+
+.fade-enter-active{
+  opacity:1;
+  transition: opacity 1000ms ease-in;
+  
+}
+
+.fade-exit{
+  opacity:1;
+}
+
+.fade-exit-active{
+  opacity:.01;
+  transition: opacity 1000ms ease-in;
+}
+
+.red{
+  background-color:red;
+
+}
+
+.overflow {
+  overflow:hidden;
+  white-space:nowrap;
+  text-overflow:ellipsis;
+
+}
+
+.blue{
+  background-color: blue;
+
+}
+
+@media only screen and (max-width: 1026px) {
+  .hide-under {
+      display: none;
+  }
+}
+
+
+.sticky{
+  position:fixed;
+  bottom:0;
+  left:0;
+}
