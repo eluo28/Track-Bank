@@ -32,6 +32,9 @@ const ItemSchema = new Schema({
     audioFileKey:{
         type:String,
         required:true
+    },
+    lyrics:{
+        type:String
     }
 
 });

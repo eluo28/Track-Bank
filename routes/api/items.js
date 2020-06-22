@@ -71,7 +71,8 @@ router.post('/',upload.single('audio'),(req,res)=>{
         description:req.body.description,
         coverImage:req.body.coverImage,
         audioFile:req.file.location,
-        audioFileKey: req.file.originalname
+        audioFileKey: req.file.originalname,
+        lyrics:req.body.lyrics
     });
 
    
