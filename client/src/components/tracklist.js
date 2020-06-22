@@ -1,13 +1,22 @@
 import React, { Component}  from 'react';
 import ReactDOM from 'react-dom';
-import { Container, ListGroup, ListGroupItem, Button,UncontrolledDropdown,DropdownToggle,DropdownMenu,DropdownItem,Media,
-
+import { 
+    Container, 
+    ListGroup, 
+    ListGroupItem, 
+    Button,
+    UncontrolledDropdown,
+    DropdownToggle,
+    DropdownMenu,
+    DropdownItem,
+    Media,
     Modal,
     ModalHeader,
     ModalBody,
     Form,
     FormGroup,
-    Input
+    Input,
+    Label
 
 
 } from 'reactstrap';
@@ -18,9 +27,8 @@ import PropTypes from 'prop-types';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 //import {Loading } from './loading';
-import FocusLock from 'react-focus-lock';
 
-//import {lyricsModal} from './lyricsModal';
+//import {LyricsModal} from './lyricsModal';
 
 
 
@@ -34,8 +42,10 @@ class TrackList extends Component {
         player:false,
         songName:"",
         lyricsModal:false,
-        lyrics:""
-      
+        lyrics:"",
+        title:"",
+        descrip:"",
+ 
     }
 
 
@@ -65,14 +75,21 @@ class TrackList extends Component {
     }
 
 
-    toggleLyrics=(lyrics)=>{
+    toggleLyrics=(lyrics,title,description)=>{
 
 
         this.setState({
             lyricsModal:!this.state.lyricsModal,
-            lyrics:lyrics
+            lyrics:lyrics,
+            title:title,
+            descrip:description,
+
         });
 
+    }
+
+    save=()=>{
+        console.log("saved")
     }
 
 
@@ -96,6 +113,8 @@ class TrackList extends Component {
 
         return (
   
+
+
             <Container key={1} >
 
                 <ListGroup className="forfooter">
@@ -124,7 +143,7 @@ class TrackList extends Component {
                                 <Button
                                 className="shadow-none col-1 ml-auto"
                                 style={{backgroundColor:"rgba(0,0,0,0)",border:"none",color:"white"}}
-                                onClick={this.toggleLyrics.bind(this,lyrics)}
+                                onClick={this.toggleLyrics.bind(this,lyrics,title,description)}
                                 >
                                     <i class="fas fa-file-alt"></i>
                                 </Button>
@@ -170,52 +189,60 @@ class TrackList extends Component {
             
 
 
-            {this.state.player && (
-
-            <FocusLock
-            persistentFocus="true">
-
-                <AudioPlayer 
-                className="sticky"
-                ref="player"
-                autoPlay
-                onPlay={e => {if(this.state.player===true){
-                    ReactDOM.findDOMNode(this.refs.player).focus()}
-                }}
-                src={this.state.file}
-                volume=".2"
-                style={{
-                    backgroundColor:"white",
-                    justifyContent:"center",
-                    outline:"none"
-                }}
-
-                header={this.state.songName}
-                />
-            </FocusLock>
-     
-            )}
 
 
-                <Modal isOpen={this.state.lyricsModal} toggle = {this.toggleLyrics}>
-                        <ModalHeader toggle = {this.toggleLyrics}>Lyrics</ModalHeader>
+                <Modal isOpen={this.state.lyricsModal} toggle = {this.toggleLyrics} size="lg">
+                        <ModalHeader toggle = {this.toggleLyrics}>{this.state.title}</ModalHeader>
                         <ModalBody>
-                            <Form >
+                            
+                            <Form onSubmit={this.save} >
                                 <FormGroup>
-                                    <Input required type="text" name="title" id="title" placeholder="lyrics">{this.state.lyrics}</Input>
-                                            
+                     
+                                <Label for="descrip">Description</Label>
+                                <Input required type="text" name="descrip" id="descrip" className="mb-3" defaultValue={this.state.descrip}></Input>
+                      
 
-                                    <Button color="dark" style={{marginTop:'2rem'}}  block>Add Track</Button>
+                    
+                                <Label for="lyrics">Lyrics</Label>
+                                <Input required type="text" name="lyrics" id="lyrics" defaultValue={this.state.lyrics}></Input>
+                 
+
+                                    <Button color="dark" style={{marginTop:'2rem'}}  block>Save</Button>
                             
                                 </FormGroup>
                             </Form>
                         </ModalBody>
+
+
+
+
+                        
                 </Modal>
            
 
-            
+                {this.state.player && (
 
 
+    <AudioPlayer 
+    className="sticky"
+    ref="player"
+    autoPlay
+    onPlay={e => {if(this.state.player===true){
+        ReactDOM.findDOMNode(this.refs.player).focus()}
+    }}
+    src={this.state.file}
+    volume=".2"
+    style={{
+        backgroundColor:"white",
+        justifyContent:"center",
+        outline:"none"
+    }}
+
+    header={this.state.songName}
+    />
+
+
+)}
                 
             
 
@@ -224,7 +251,12 @@ class TrackList extends Component {
 
             </Container>
 
-  
+
+
+         
+
+
+
 
 
 
