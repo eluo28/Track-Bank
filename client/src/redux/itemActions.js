@@ -33,6 +33,17 @@ export const addItem = (formData)=>dispatch=>{
     )
 };
 
+export const updateItem = (id)=>dispatch=>{
+    axios
+        .post(`api/items/upload/${id}`).then(res=>
+            dispatch({
+                type:UPDATE_ITEM,
+                payload:id
+            })
+            );
+};
+
+
 export const setItemsLoading=()=>{
     return{
         type:ITEMS_LOADING

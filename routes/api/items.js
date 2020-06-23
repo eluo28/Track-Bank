@@ -82,6 +82,32 @@ router.post('/',upload.single('audio'),(req,res)=>{
 
 
 
+//@route PUT api/items/:id
+//@desc update item
+//@access private
+
+router.post('/update/:id',(req, res) =>{
+
+  Item.findById(req.params.id)
+    .then(item=>{
+        item.title=req.body.title,  
+        item.producer=req.body.producer,
+        item.description=req.body.description,
+        item.coverImage=req.body.coverImage,
+        item.lyrics=req.body.lyrics
+
+
+        item.save()
+        .then(item=>res.json(item));
+
+    })
+
+
+
+
+});
+
+
 
 //@route DELETE api/items/:id
 //@desc delete item
