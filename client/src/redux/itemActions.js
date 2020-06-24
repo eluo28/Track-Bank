@@ -1,4 +1,4 @@
-import {GET_ITEMS,ADD_ITEM,DELETE_ITEM,ITEMS_LOADING} from './actionTypes';
+import {GET_ITEMS,ADD_ITEM,DELETE_ITEM,ITEMS_LOADING,UPDATE_ITEM} from './actionTypes';
 import axios from 'axios';
 
 export const getItems = ()=>dispatch=>{
@@ -33,12 +33,12 @@ export const addItem = (formData)=>dispatch=>{
     )
 };
 
-export const updateItem = (id)=>dispatch=>{
+export const updateItem = (id,formData)=>dispatch=>{
     axios
-        .post(`api/items/upload/${id}`).then(res=>
+        .post(`api/items/upload/${id}`,formData).then(res=>
             dispatch({
                 type:UPDATE_ITEM,
-                payload:id
+                payload:res.data
             })
             );
 };

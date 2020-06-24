@@ -1,5 +1,3 @@
-
-/*
 import React from 'react';
 import {
     Button,
@@ -8,31 +6,40 @@ import {
     ModalBody,
     Form,
     FormGroup,
-    Input
+    Input,
+    Label
 } from 'reactstrap';
 
 
-
-
-
-
-export const LyricsModal=(lyrics,title,description,producer,open,togg=>{
+export const LyricsModal=(props)=>{
     return(
         <div>
-             <Modal isOpen={this.state.lyricsModal} toggle = {this.toggleLyrics}>
-                        <ModalHeader toggle = {this.toggleLyrics}>Lyrics</ModalHeader>
+              <Modal isOpen={props.lyricsModal} toggle = {props.toggleLyrics} size="lg">
+                        <ModalHeader toggle = {props.toggleLyrics}>{props.title}</ModalHeader>
                         <ModalBody>
-                            <Form >
+                            
+                            <Form>
                                 <FormGroup>
-                                    <Input required type="text" name="title" id="title" placeholder="lyrics">{this.state.lyrics}</Input>
-                                            
+                     
+                                <Label for="descrip">Description</Label>
+                                <Input required type="text" name="descrip" id="descrip" className="mb-3" defaultValue={props.descrip}></Input>
+                      
 
-                                    <Button color="dark" style={{marginTop:'2rem'}}  block>Add Track</Button>
+                    
+                                <Label for="lyrics">Lyrics</Label>
+                                <Input required type="text" name="lyrics" id="lyrics" defaultValue={props.lyrics}></Input>
+                 
+
+                                    <Button color="dark" style={{marginTop:'2rem'}}  block>Save</Button>
                             
                                 </FormGroup>
                             </Form>
                         </ModalBody>
-                </Modal>
+
+                        </Modal>
         </div>
     )
-}*/
+}
+
+
+

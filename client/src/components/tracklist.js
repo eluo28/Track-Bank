@@ -10,15 +10,6 @@ import {
     DropdownMenu,
     DropdownItem,
     Media,
-    Modal,
-    ModalHeader,
-    ModalBody,
-    Form,
-    FormGroup,
-    Input,
-    Label
-
-
 } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
@@ -28,7 +19,7 @@ import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 //import {Loading } from './loading';
 
-//import {LyricsModal} from './lyricsModal';
+import {LyricsModal} from './lyricsModal';
 
 
 
@@ -54,38 +45,27 @@ class TrackList extends Component {
     }
 
 
-
-
     onDeleteClick = (id) => {
         this.props.deleteItem(id);
     }   
 
     togglePlayer=(audioFile,title)=>{
-
-
         if(this.state.player===false){
             this.setState({file:audioFile,player:!this.state.player,songName:title})
         }
         else{
             this.setState({file:audioFile,songName:title})
-            
         }
-
-
     }
 
 
     toggleLyrics=(lyrics,title,description)=>{
-
-
         this.setState({
             lyricsModal:!this.state.lyricsModal,
             lyrics:lyrics,
             title:title,
             descrip:description,
-
         });
-
     }
 
     save=()=>{
@@ -107,14 +87,7 @@ class TrackList extends Component {
             )
         }*/
 
-
-        
-        
-
         return (
-  
-
-
             <Container key={1} >
 
                 <ListGroup className="forfooter">
@@ -186,84 +159,41 @@ class TrackList extends Component {
                 </ListGroup>
 
 
-            
-
-
-
-
-                <Modal isOpen={this.state.lyricsModal} toggle = {this.toggleLyrics} size="lg">
-                        <ModalHeader toggle = {this.toggleLyrics}>{this.state.title}</ModalHeader>
-                        <ModalBody>
-                            
-                            <Form onSubmit={this.save} >
-                                <FormGroup>
-                     
-                                <Label for="descrip">Description</Label>
-                                <Input required type="text" name="descrip" id="descrip" className="mb-3" defaultValue={this.state.descrip}></Input>
-                      
-
-                    
-                                <Label for="lyrics">Lyrics</Label>
-                                <Input required type="text" name="lyrics" id="lyrics" defaultValue={this.state.lyrics}></Input>
-                 
-
-                                    <Button color="dark" style={{marginTop:'2rem'}}  block>Save</Button>
-                            
-                                </FormGroup>
-                            </Form>
-                        </ModalBody>
-
-
-
-
-                        
-                </Modal>
-           
+                
+                <LyricsModal
+                lyricsModal={this.state.lyricsModal}
+                toggleLyrics={this.toggleLyrics}
+                title={this.state.title}
+                descrip={this.state.descrip}
+                lyrics={this.state.lyrics}
+                />
+                
 
                 {this.state.player && (
-
-
-    <AudioPlayer 
-    className="sticky"
-    ref="player"
-    autoPlay
-    onPlay={e => {if(this.state.player===true){
-        ReactDOM.findDOMNode(this.refs.player).focus()}
-    }}
-    src={this.state.file}
-    volume=".2"
-    style={{
-        backgroundColor:"white",
-        justifyContent:"center",
-        outline:"none"
-    }}
-
-    header={this.state.songName}
-    />
-
+                <AudioPlayer 
+                className="sticky"
+                ref="player"
+                autoPlay
+                onPlay={e => {if(this.state.player===true){
+                    ReactDOM.findDOMNode(this.refs.player).focus()}
+                }}
+                src={this.state.file}
+                volume=".2"
+                style={{
+                    backgroundColor:"white",
+                    justifyContent:"center",
+                    outline:"none"
+                }}
+                header={this.state.songName}
+                />
 
 )}
-                
-            
-
-                
-
-
+    
             </Container>
-
-
-
-         
-
-
-
-
-
 
         );
 
-        
-        
+    
     }
     
 }
