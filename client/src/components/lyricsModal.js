@@ -51,7 +51,7 @@ class LyricsModal extends Component{
         }
         console.log(data)
         
-        //add item via updateItem action
+        //update item via updateItem action
         this.props.updateItem(data)
 
         //close modal

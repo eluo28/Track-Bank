@@ -82,7 +82,7 @@ router.post('/',upload.single('audio'),(req,res)=>{
 
 
 
-//@route PUT api/items/:id
+//@route POST api/items/:id
 //@desc update item
 //@access private
 

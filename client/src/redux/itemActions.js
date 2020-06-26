@@ -33,9 +33,10 @@ export const addItem = (formData)=>dispatch=>{
     )
 };
 
-export const updateItem = (data)=>dispatch=>{
+export const updateItem = data=>dispatch=>{
     axios
-        .post('api/items/upload',data).then(res=>
+        .post('api/items/update',data)
+        .then(res=>
             dispatch({
                 type:UPDATE_ITEM,
                 payload:res.data

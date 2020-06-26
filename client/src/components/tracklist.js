@@ -165,7 +165,8 @@ class TrackList extends Component {
                 lyrics={this.state.lyrics}
                 id={this.state.id}
                 />
-                
+
+
 
                 {this.state.player && (
                 <AudioPlayer 
