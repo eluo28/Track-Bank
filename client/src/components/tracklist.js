@@ -19,7 +19,7 @@ import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 //import {Loading } from './loading';
 
-import {LyricsModal} from './lyricsModal';
+import LyricsModal from './lyricsModal';
 
 
 
@@ -36,6 +36,7 @@ class TrackList extends Component {
         lyrics:"",
         title:"",
         descrip:"",
+        id:""
  
     }
 
@@ -59,18 +60,15 @@ class TrackList extends Component {
     }
 
 
-    toggleLyrics=(lyrics,title,description)=>{
+    toggleLyrics=(lyrics,title,_id)=>{
         this.setState({
             lyricsModal:!this.state.lyricsModal,
             lyrics:lyrics,
             title:title,
-            descrip:description,
+            id:_id
         });
     }
 
-    save=()=>{
-        console.log("saved")
-    }
 
 
     render() {
@@ -104,7 +102,7 @@ class TrackList extends Component {
                                 style={{backgroundColor:"rgba(0,0,0,0)",border:"none",color:"white"}}
                                 onClick={this.togglePlayer.bind(this, audioFile,title)}
                                 >
-                                    <i class="fas fa-play"></i>
+                                    <i className="fas fa-play"></i>
                                 </Button>
 
                           
@@ -116,9 +114,9 @@ class TrackList extends Component {
                                 <Button
                                 className="shadow-none col-1 ml-auto"
                                 style={{backgroundColor:"rgba(0,0,0,0)",border:"none",color:"white"}}
-                                onClick={this.toggleLyrics.bind(this,lyrics,title,description)}
+                                onClick={this.toggleLyrics.bind(this,lyrics,title,_id)}
                                 >
-                                    <i class="fas fa-file-alt"></i>
+                                    <i className="fas fa-file-alt"></i>
                                 </Button>
                             
                       
@@ -164,8 +162,8 @@ class TrackList extends Component {
                 lyricsModal={this.state.lyricsModal}
                 toggleLyrics={this.toggleLyrics}
                 title={this.state.title}
-                descrip={this.state.descrip}
                 lyrics={this.state.lyrics}
+                id={this.state.id}
                 />
                 
 

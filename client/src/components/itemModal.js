@@ -55,7 +55,7 @@ class ItemModal extends Component{
             this.setState({[targ.name]: targ.value });
         
        
-        
+
     }
 
     onSubmit=(e)=>{

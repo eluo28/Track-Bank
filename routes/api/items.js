@@ -90,12 +90,18 @@ router.post('/update/:id',(req, res) =>{
 
   Item.findById(req.params.id)
     .then(item=>{
+
+
+        if(req.body.lyrics!=null){
+          item.lyrics=req.body.lyrics
+
+        }
+        else{
         item.title=req.body.title,  
         item.producer=req.body.producer,
         item.description=req.body.description,
-        item.coverImage=req.body.coverImage,
-        item.lyrics=req.body.lyrics
-
+        item.coverImage=req.body.coverImage
+        }
 
         item.save()
         .then(item=>res.json(item));
