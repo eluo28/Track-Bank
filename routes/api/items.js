@@ -86,22 +86,26 @@ router.post('/',upload.single('audio'),(req,res)=>{
 //@desc update item
 //@access private
 
-router.post('/update/:id',(req, res) =>{
+router.post('/update',(req, res) =>{
 
-  Item.findById(req.params.id)
+
+  Item.findById(req.body.id)
     .then(item=>{
 
 
-        if(req.body.lyrics!=null){
-          item.lyrics=req.body.lyrics
+        //if(req.body.lyrics!=null){
 
+        item.lyrics=req.body.lyrics
+
+        //res.json(req.body.lyrics)
+          /*
         }
         else{
         item.title=req.body.title,  
         item.producer=req.body.producer,
         item.description=req.body.description,
         item.coverImage=req.body.coverImage
-        }
+        }*/
 
         item.save()
         .then(item=>res.json(item));

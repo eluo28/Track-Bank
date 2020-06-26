@@ -21,7 +21,7 @@ export default function(state = initialState,action){
             };
         case ADD_ITEM:
             return{
-                ...state,
+                ...state,   
                 items:[action.payload,...state.items]
             };
         case UPDATE_ITEM:

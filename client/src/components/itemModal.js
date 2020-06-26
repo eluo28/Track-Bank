@@ -54,12 +54,14 @@ class ItemModal extends Component{
 
             this.setState({[targ.name]: targ.value });
         
-       
+
 
     }
 
     onSubmit=(e)=>{
         e.preventDefault();
+
+
 
         const formData=new FormData();
         formData.append('audio',this.state.audioFile)

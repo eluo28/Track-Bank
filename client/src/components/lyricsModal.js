@@ -12,25 +12,23 @@ import {
     Label
 } from 'reactstrap';
 
-//import {connect} from 'react-redux';
-//import {updateItem} from '../redux/itemActions';
+import {connect} from 'react-redux';
+import {updateItem} from '../redux/itemActions';
 
 
 
 class LyricsModal extends Component{
 
 
-    constructor(props) {
 
-        super(props);
 
-        this.state = {
-            newLyrics:this.props.lyrics,
-            id:this.props.id
+    state = {
+            newLyrics:"",
+
         }
 
 
-    }    
+    
     
  
     onChange=(e)=>{
@@ -38,25 +36,30 @@ class LyricsModal extends Component{
 
 
         this.setState({[targ.name]: targ.value });
+
         
     }
 
     onSubmit=(e)=>{
         e.preventDefault();
 
-        console.log(this.state.newLyrics)
-        console.log(this.state.id)
+        
 
-        //const data=new FormData();
-        //data.append('lyrics',this.state.newLyrics)
+        const data={
+            lyrics:this.state.newLyrics,
+            id:this.props.id
+        }
+        console.log(data)
         
         //add item via updateItem action
-        
-        //this.props.updateItem(data)
+        this.props.updateItem(data)
 
         //close modal
-        //this.props.toggleLyrics()
+        this.props.toggleLyrics()
     }
+
+
+
 
     render(){
 
@@ -97,14 +100,13 @@ class LyricsModal extends Component{
 
 }
 
-/*
+
 const mapStateToProps=state=>({
 
     newLyrics:state.newLyrics
-});*/
+});
 
 
-//export default connect(mapStateToProps,{updateItem})(LyricsModal);
-export default LyricsModal;
+export default connect(mapStateToProps,{updateItem})(LyricsModal);
 
 
