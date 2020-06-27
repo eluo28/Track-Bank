@@ -27,8 +27,8 @@ export default function(state = initialState,action){
         case UPDATE_ITEM:
             return{
                 ...state,
-                items:[action.payload,...state.items]
-            }
+                items:state.items.map(item=>item._id===action.payload._id ? {...item,lyrics:action.payload.lyrics}:item)
+            };
         case ITEMS_LOADING:
             return{
                 ...state,

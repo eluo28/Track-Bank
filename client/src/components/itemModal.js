@@ -163,12 +163,8 @@ class ItemModal extends Component{
 }
 
 const mapStateToProps=state=>({
-    item:state.item,
-    description:state.description,
-    producer:state.producer,
-    coverImage:state.coverImage,
-    audioFile:state.audioFile,
-    lyrics:state.lyrics
+    item: state.item
+    
 });
 
 export default connect(mapStateToProps,{addItem})(ItemModal);

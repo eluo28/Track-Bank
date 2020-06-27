@@ -43,8 +43,7 @@ class LyricsModal extends Component{
     onSubmit=(e)=>{
         e.preventDefault();
 
-        
-
+    
         const data={
             lyrics:this.state.newLyrics,
             id:this.props.id
@@ -79,8 +78,8 @@ class LyricsModal extends Component{
     
                         
                                     <Label for="newLyrics">Lyrics</Label>
-                                    <Input required type="text" name="newLyrics" id="newLyrics" defaultValue={this.props.lyrics} onChange={this.onChange}></Input>
-                     
+                                    <Input required  rows="20" type="textarea" name="newLyrics" id="newLyrics" defaultValue={this.props.lyrics} onChange={this.onChange}></Input>
+                                   
     
                                         <Button color="dark" style={{marginTop:'2rem'}}  block>Save</Button>
                                 
@@ -102,8 +101,7 @@ class LyricsModal extends Component{
 
 
 const mapStateToProps=state=>({
-
-    newLyrics:state.newLyrics
+item: state.item
 });
 
 

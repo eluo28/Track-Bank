@@ -42,6 +42,8 @@ export const updateItem = data=>dispatch=>{
                 payload:res.data
             })
             );
+
+            
 };
 
 
