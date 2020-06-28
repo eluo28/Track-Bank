@@ -1,7 +1,4 @@
-.remove-btn{
-  margin-right:.5rem;
- 
-}
+
 
 .fade-enter{
   opacity:.01;
@@ -52,7 +49,10 @@
   left:0;
 }
 
-.btn:focus {
+
+.test:active{
   outline: none !important;
   outline-offset: none !important;
+  background: black!important;
+
 }

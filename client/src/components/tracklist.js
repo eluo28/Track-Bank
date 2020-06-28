@@ -20,6 +20,7 @@ import 'react-h5-audio-player/lib/styles.css';
 //import {Loading } from './loading';
 
 import LyricsModal from './lyricsModal';
+import EditModal from './editModal';
 
 
 
@@ -37,7 +38,7 @@ class TrackList extends Component {
         title:"",
         descrip:"",
         id:"",
-        prod:"",
+        producer:"",
         covImg:"",
         audFile:"",
         editModal:false
@@ -74,16 +75,16 @@ class TrackList extends Component {
     }
 
 
-    toggleEdit=(_id, title, producer, description,coverImage,audioFile)=>{
+    toggleEdit=(_id, title, producer, description,coverImage)=>{
         this.setState({
             editModal:!this.state.editModal,
             title:title,
             id:_id,
             descrip:description,
-            prod:producer,
-            covImg:coverImage,
-            audFile:audioFile
+            producer:producer,
+            covImg:coverImage
         });
+
     }
 
 
@@ -143,25 +144,17 @@ class TrackList extends Component {
                                     <span>&#8942;</span>   
                                     </DropdownToggle>
                                     <DropdownMenu right>
-                                        <DropdownItem className="d-flex justify-content-center">
-                                            <Button
-                                            style={{backgroundColor:"rgba(0,0,0,0)",border:"none",color:"black"}}
-                                            className="shadow-none"
-                                            onClick={this.toggleEdit.bind(this,_id, title, producer, description,coverImage,audioFile)}
-                                            >
-                                           
-                                            Edit
-                                            </Button>
+                                        <DropdownItem className="d-flex justify-content-center test"
+                                        style={{outline:"none"}}
+                                        onClick={this.toggleEdit.bind(this,_id, title, producer, description,coverImage)}>
+                                        Edit
                                         </DropdownItem>
 
-                                        <DropdownItem className="d-flex justify-content-center">
-                                            <Button 
-                                                style={{backgroundColor:"rgba(0,0,0,0)",border:"none",color:"black",outline:"none"}}
-                                                className="shadow-none"
-                                                outline="none"
-                                                onClick={this.onDeleteClick.bind(this, _id)}
-                                            >Delete
-                                            </Button>
+                                        <DropdownItem className="d-flex justify-content-center"
+                                        style={{outline:"none"}}
+                                        onClick={this.onDeleteClick.bind(this, _id)}
+                                        >
+                                        Delete                                    
                                     </DropdownItem>
                               
                                     </DropdownMenu>
@@ -186,6 +179,17 @@ class TrackList extends Component {
                 title={this.state.title}
                 lyrics={this.state.lyrics}
                 id={this.state.id}
+                />
+
+                <EditModal
+                editModal={this.state.editModal}
+                toggleEdit={this.toggleEdit}
+                title={this.state.title}
+                id={this.state.id}
+                description={this.state.descrip}
+                producer={this.state.producer}
+                coverImage={this.state.covImg}
+             
                 />
 
 

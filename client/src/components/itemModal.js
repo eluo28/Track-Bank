@@ -6,7 +6,8 @@ import {
     ModalBody,
     Form,
     FormGroup,
-    Input
+    Input,
+    Label
 } from 'reactstrap';
 import {connect} from 'react-redux';
 import {addItem} from '../redux/itemActions';
@@ -89,9 +90,16 @@ class ItemModal extends Component{
                 <ModalBody>
                     <Form onSubmit={this.onSubmit}>
                         <FormGroup>
+
+                        <Label for="title">Title</Label>
                             <Input required type="text" name="title" id="title" placeholder="Title" onChange={this.onChange}></Input>
+                            <Label for="producer" className="mt-4">Producer</Label>
+                            
                             <Input required type="text" name="producer" id="producer" className="mt-3" placeholder="Producer" onChange={this.onChange}></Input>
+                            
+                            <Label for="description" className="mt-4">Description</Label>
                             <Input required type="text" name="description" id="description" className="mt-3" placeholder="Description" onChange={this.onChange}></Input>
+                            <Label for="lyrics" className="mt-4">Lyrics</Label>
                             <Input type="text" name="lyrics" id="lyrics" className="mt-3" placeholder="Lyrics" onChange={this.onChange}></Input>
                      
                             <FilePond

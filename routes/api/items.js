@@ -93,19 +93,24 @@ router.post('/update',(req, res) =>{
     .then(item=>{
 
 
-        //if(req.body.lyrics!=null){
-
-        item.lyrics=req.body.lyrics
-
-          /*
+        if(req.body.lyrics!=null){
+          item.lyrics=req.body.lyrics
         }
-        else {
-        item.title=req.body.title,  
-        item.producer=req.body.producer,
-        item.description=req.body.description,
-        item.coverImage=req.body.coverImage
+        else{
+          if(req.body.title!=null){
+            item.title=req.body.title
+          }
+          if(req.body.producer!=null){
+            item.producer=req.body.producer
+          }
+          if(req.body.description!=null){
+            item.description=req.body.description
+          }
+          if(req.body.coverImage!=null){
+            item.coverImage=req.body.coverImage
+          }
         }
-        */
+        
         item.save()
         .then(item=>res.json(item));
 

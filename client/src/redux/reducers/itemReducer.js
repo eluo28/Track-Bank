@@ -27,7 +27,14 @@ export default function(state = initialState,action){
         case UPDATE_ITEM:
             return{
                 ...state,
-                items:state.items.map(item=>item._id===action.payload._id ? {...item,lyrics:action.payload.lyrics}:item)
+                items:state.items.map(item=>item._id===action.payload._id ? {...item,
+                    lyrics:action.payload.lyrics,
+                    title:action.payload.title,
+                    producer:action.payload.producer,
+                    description:action.payload.description,
+                    coverImage:action.payload.coverImage
+                
+                }:item)
             };
         case ITEMS_LOADING:
             return{
