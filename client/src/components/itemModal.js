@@ -81,7 +81,7 @@ class ItemModal extends Component{
     render(){
         return(
             <div>
-                <Button style={{marginBottom:'2rem',backgroundColor:"#2E2E2E",border:"none"}} onClick={this.toggle}>
+                <Button style={{backgroundColor:"#2E2E2E",border:"none"}} onClick={this.toggle}>
                     Add Item
                 </Button>
 
@@ -95,12 +95,12 @@ class ItemModal extends Component{
                             <Input required type="text" name="title" id="title" placeholder="Title" onChange={this.onChange}></Input>
                             <Label for="producer" className="mt-4">Producer</Label>
                             
-                            <Input required type="text" name="producer" id="producer" className="mt-3" placeholder="Producer" onChange={this.onChange}></Input>
+                            <Input required type="text" name="producer" id="producer"placeholder="Producer" onChange={this.onChange}></Input>
                             
                             <Label for="description" className="mt-4">Description</Label>
-                            <Input required type="text" name="description" id="description" className="mt-3" placeholder="Description" onChange={this.onChange}></Input>
+                            <Input required type="text" name="description" id="description"  placeholder="Description" onChange={this.onChange}></Input>
                             <Label for="lyrics" className="mt-4">Lyrics</Label>
-                            <Input type="text" name="lyrics" id="lyrics" className="mt-3" placeholder="Lyrics" onChange={this.onChange}></Input>
+                            <Input type="text" name="lyrics" id="lyrics"placeholder="Lyrics" onChange={this.onChange}></Input>
                      
                             <FilePond
 
@@ -108,7 +108,7 @@ class ItemModal extends Component{
                             imageResizeTargetWidth="75"
                             imageResizeTargetHeight="75"
                             allowMultiple={false}
-                            className="mt-3"
+                            className="mt-4"
                             name="coverImage"
                             acceptedFileTypes={['image/*']}
                             imageResizeMode="force"

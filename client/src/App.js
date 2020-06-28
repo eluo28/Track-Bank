@@ -1,12 +1,13 @@
 import React from 'react';
 import './App.css';
-import 'bootstrap/dist/css/bootstrap.min.css';
 import NavComponent from './components/navbar';
 import Tracklist from './components/tracklist';
 import ItemModal from './components/itemModal';
-import {Container} from 'reactstrap';
+import Searchbar from './components/searchbar';
+import 'bootstrap/dist/css/bootstrap.min.css';
 import {Provider} from 'react-redux';
 import store from './redux/store';
+import {Container,Row,Col} from 'reactstrap';
 
 
 function App() {
@@ -14,18 +15,24 @@ function App() {
 
     return (
     <Provider store={store}>
-    <div className="App">
       <NavComponent/>
 
-      <Container>
-      <ItemModal/>
-      <Tracklist/>
-      </Container>
+<Container>
+    <Row 
+    style={{marginBottom:'2rem'}}
+    >
 
+    <Col>
+    <ItemModal/>
+    </Col>
+    <Col>
+    <Searchbar/>
+    </Col>
+    </Row>
 
-      
-      
-    </div>
+<Tracklist/>
+</Container>
+
     </Provider>
   );
 }
