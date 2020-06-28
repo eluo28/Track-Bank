@@ -36,7 +36,11 @@ class TrackList extends Component {
         lyrics:"",
         title:"",
         descrip:"",
-        id:""
+        id:"",
+        prod:"",
+        covImg:"",
+        audFile:"",
+        editModal:false
  
     }
 
@@ -68,6 +72,20 @@ class TrackList extends Component {
             id:_id
         });
     }
+
+
+    toggleEdit=(_id, title, producer, description,coverImage,audioFile)=>{
+        this.setState({
+            editModal:!this.state.editModal,
+            title:title,
+            id:_id,
+            descrip:description,
+            prod:producer,
+            covImg:coverImage,
+            audFile:audioFile
+        });
+    }
+
 
 
 
@@ -124,10 +142,13 @@ class TrackList extends Component {
                                     <DropdownToggle style={{backgroundColor:"rgba(0,0,0,0)",border:"none"}} className="shadow-none col-1" > 
                                     <span>&#8942;</span>   
                                     </DropdownToggle>
-                                    <DropdownMenu >
+                                    <DropdownMenu right>
                                         <DropdownItem className="d-flex justify-content-center">
                                             <Button
-                                            style={{backgroundColor:"rgba(0,0,0,0)",border:"none",color:"black"}}>
+                                            style={{backgroundColor:"rgba(0,0,0,0)",border:"none",color:"black"}}
+                                            className="shadow-none"
+                                            onClick={this.toggleEdit.bind(this,_id, title, producer, description,coverImage,audioFile)}
+                                            >
                                            
                                             Edit
                                             </Button>
@@ -135,8 +156,9 @@ class TrackList extends Component {
 
                                         <DropdownItem className="d-flex justify-content-center">
                                             <Button 
-                                                style={{backgroundColor:"rgba(0,0,0,0)",border:"none",color:"black"}}
-                                                
+                                                style={{backgroundColor:"rgba(0,0,0,0)",border:"none",color:"black",outline:"none"}}
+                                                className="shadow-none"
+                                                outline="none"
                                                 onClick={this.onDeleteClick.bind(this, _id)}
                                             >Delete
                                             </Button>

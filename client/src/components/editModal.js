@@ -1,5 +1,5 @@
 
-
+/*
 import React,{ Component}  from 'react';
 import {
     Button,
@@ -17,7 +17,7 @@ import {updateItem} from '../redux/itemActions';
 
 
 
-class LyricsModal extends Component{
+class EditModal extends Component{
 
 
 
@@ -43,26 +43,18 @@ class LyricsModal extends Component{
     onSubmit=(e)=>{
         e.preventDefault();
 
-
-        if(this.state.newLyrics===null){
-            this.props.toggleLyrics()
-        }
-        else{
-        
-        
+    
         const data={
             lyrics:this.state.newLyrics,
             id:this.props.id
         }
-
-        this.setState({newLyrics: null });
+        console.log(data)
         
         //update item via updateItem action
         this.props.updateItem(data)
 
         //close modal
         this.props.toggleLyrics()
-        }
     }
 
 
@@ -113,6 +105,7 @@ item: state.item
 });
 
 
-export default connect(mapStateToProps,{updateItem})(LyricsModal);
+export default connect(mapStateToProps,{updateItem})(EditModal);
 
 
+*/

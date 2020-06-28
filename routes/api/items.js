@@ -97,16 +97,15 @@ router.post('/update',(req, res) =>{
 
         item.lyrics=req.body.lyrics
 
-        //res.json(req.body.lyrics)
           /*
         }
-        else{
+        else {
         item.title=req.body.title,  
         item.producer=req.body.producer,
         item.description=req.body.description,
         item.coverImage=req.body.coverImage
-        }*/
-
+        }
+        */
         item.save()
         .then(item=>res.json(item));
 
