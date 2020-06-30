@@ -6,7 +6,7 @@ import {
 
 
 
-class Searchbar extends Component{
+class Sort extends Component{
 
 
 
@@ -17,7 +17,7 @@ class Searchbar extends Component{
 
        
         <Button style={{backgroundColor:"#2E2E2E",border:"none"}}>
-        <i class="fas fa-search"></i>
+        <i class="fas fa-sort"></i>
         </Button>
 
         );
@@ -32,4 +32,4 @@ class Searchbar extends Component{
 
 }
 
-export default Searchbar;
+export default Sort;

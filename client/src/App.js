@@ -3,7 +3,7 @@ import './App.css';
 import NavComponent from './components/navbar';
 import Tracklist from './components/tracklist';
 import ItemModal from './components/itemModal';
-import Searchbar from './components/searchbar';
+import Sort from './components/sort';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Provider} from 'react-redux';
 import store from './redux/store';
@@ -22,11 +22,11 @@ function App() {
     style={{marginBottom:'2rem'}}
     >
 
-    <Col>
+    <Col xs="1">
     <ItemModal/>
     </Col>
-    <Col>
-    <Searchbar/>
+    <Col xs="1">
+    <Sort/>
     </Col>
     </Row>
 

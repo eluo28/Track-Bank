@@ -82,7 +82,7 @@ class ItemModal extends Component{
         return(
             <div>
                 <Button style={{backgroundColor:"#2E2E2E",border:"none"}} onClick={this.toggle}>
-                    Add Item
+                <i class="fas fa-plus"></i>
                 </Button>
 
                 <Modal isOpen={this.state.modal} toggle = {this.toggle}>
