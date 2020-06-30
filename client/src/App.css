@@ -1,3 +1,13 @@
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  background-color:rgba(0, 0, 0, 0.75);
+}
+
+.main{
+
+  
+}
 
 
 .fade-enter{

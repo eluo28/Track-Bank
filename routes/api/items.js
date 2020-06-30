@@ -111,6 +111,10 @@ router.post('/update',(req, res) =>{
           }
         }
         
+        if(req.body.voiceMemo!=null){
+          item.voiceMemo=req.body.voiceMemo
+        }
+
         item.save()
         .then(item=>res.json(item));
 

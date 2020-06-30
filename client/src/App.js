@@ -14,6 +14,9 @@ function App() {
 
 
     return (
+
+
+      <div className="main">
     <Provider store={store}>
       <NavComponent/>
 
@@ -34,6 +37,7 @@ function App() {
 </Container>
 
     </Provider>
+    </div>
   );
 }
 

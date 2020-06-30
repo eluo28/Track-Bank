@@ -32,7 +32,8 @@ export default function(state = initialState,action){
                     title:action.payload.title,
                     producer:action.payload.producer,
                     description:action.payload.description,
-                    coverImage:action.payload.coverImage
+                    coverImage:action.payload.coverImage,
+                    voiceMemo:action.payload.voiceMemo
                 
                 }:item)
             };

@@ -22,6 +22,8 @@ import 'react-h5-audio-player/lib/styles.css';
 import LyricsModal from './lyricsModal';
 import EditModal from './editModal';
 
+import Recorder from './recorder';
+
 
 
 
@@ -41,7 +43,9 @@ class TrackList extends Component {
         producer:"",
         covImg:"",
         audFile:"",
-        editModal:false
+        editModal:false,
+        recorder:false,
+        voiceMemo:""
  
     }
 
@@ -62,6 +66,15 @@ class TrackList extends Component {
         else{
             this.setState({file:audioFile,songName:title})
         }
+    }
+
+    toggleRecorder=(voiceMemo,id)=>{
+        this.setState({
+            recorder:!this.state.recorder,
+            id:id,
+            voiceMemo:voiceMemo
+        })
+
     }
 
 
@@ -87,6 +100,7 @@ class TrackList extends Component {
 
     }
 
+    
 
 
 
@@ -109,12 +123,13 @@ class TrackList extends Component {
 
                 <ListGroup className="forfooter">
                     <TransitionGroup className="track-list">
-                        {items.map(({ _id, title, producer, description,coverImage,audioFile,lyrics}) => (
+                        {items.map(({ _id, title, producer, description,coverImage,audioFile,lyrics,voiceMemo}) => (
                          
                             
                             <CSSTransition key={_id} timeout={500} classNames="fade">
                                 <ListGroupItem style={{ backgroundColor: "#2E2E2E", color: "white",border:"none" }} className="d-flex align-items-center mb-2 ">
-                                    
+                                
+               
                             
                                 <Button
                                 className="shadow-none"
@@ -127,17 +142,31 @@ class TrackList extends Component {
                           
                               <Media object src={coverImage} className="col-1 hide-under"/>
                                 <div className="col-3  overflow">{title} - {producer}</div>
-                                <div className="col-6  overflow">{description}</div>
+                                <div className="col-5  overflow">{description}</div>
 
+
+                            
+
+                            
+                                <Button
+                                className="shadow-none ml-auto col-1"
+                                style={{backgroundColor:"rgba(0,0,0,0)",border:"none",color:"white"}}
+                                onClick={this.toggleRecorder.bind(this,voiceMemo,_id)}
+                                >
+                                    <i class="fas fa-microphone"></i>
+                                </Button>
                         
                                 <Button
-                                className="shadow-none col-1 ml-auto"
+                                className="shadow-none ml-auto col-1"
                                 style={{backgroundColor:"rgba(0,0,0,0)",border:"none",color:"white"}}
                                 onClick={this.toggleLyrics.bind(this,lyrics,title,_id)}
                                 >
                                     <i className="fas fa-file-alt"></i>
                                 </Button>
-                            
+
+
+                          
+                  
                       
                                 <UncontrolledDropdown className="ml-auto">                      
                                     <DropdownToggle style={{backgroundColor:"rgba(0,0,0,0)",border:"none"}} className="shadow-none col-1" > 
@@ -213,6 +242,17 @@ class TrackList extends Component {
                 />
 
 )}
+    
+                {this.state.recorder &&(
+                    
+                    
+                    <Recorder
+                    voiceMemo={this.state.voiceMemo}
+                    id={this.state.id}
+                    />
+                )}
+        
+        
     
             </Container>
 

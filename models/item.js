@@ -35,6 +35,9 @@ const ItemSchema = new Schema({
     },
     lyrics:{
         type:String
+    },
+    voiceMemo:{
+        type:String
     }
 
 });
