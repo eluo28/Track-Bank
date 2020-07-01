@@ -11,7 +11,8 @@ import ReactAudioPlayer from 'react-audio-player';
 class Recorder extends Component{
     
     state = {
-        record:false
+        record:false,
+        srrc:""
 
     }
 
@@ -24,20 +25,39 @@ class Recorder extends Component{
       }
      
 
+
+
+    blobToBase64 = blob => {
+        const reader = new FileReader();
+        reader.readAsDataURL(blob);
+        return new Promise(resolve => {
+            reader.onloadend = () => {
+            resolve(reader.result);
+            };
+        });
+        };
+
       onStop=(recordedBlob) =>{
         console.log('recordedBlob is: ', recordedBlob);
 
+   
+        this.blobToBase64(recordedBlob.blob).then(res => {
+  
+            const data={
+                voiceMemo:res,
+                id:this.props.id
+            }
+    
+    
+            console.log(data)
+            //update item via updateItem action
+            this.props.updateItem(data)
+
+
+          });
+
         
-
-
-        const data={
-            voiceMemo:recordedBlob.blobURL,
-            id:this.props.id
-        }
-
         
-        //update item via updateItem action
-        this.props.updateItem(data)
 
       }
 
@@ -52,17 +72,18 @@ class Recorder extends Component{
             className="sound-wave"
             onStop={this.onStop}
             strokeColor="#000000"
-            backgroundColor="#FF4081" />
+            backgroundColor="#FF4081" 
+            mimeType="audio/mp3"/>
             <Button onClick={this.startRecording} type="button">Start</Button>
             <Button onClick={this.stopRecording} type="button">Stop</Button>
 
 
+            
             <ReactAudioPlayer
             src={this.props.voiceMemo}
-            autoPlay
             controls
             />
- 
+    {this.props.voiceMemo}
             </div>
         )
 
