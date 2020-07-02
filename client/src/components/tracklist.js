@@ -11,7 +11,9 @@ import {
     DropdownItem,
     Media,
     Collapse,
-    CardBody, Card
+    CardBody,
+    Card,
+    CardHeader
 } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
@@ -25,7 +27,7 @@ import LyricsModal from './lyricsModal';
 import EditModal from './editModal';
 
 import Recorder from './recorder';
-import ReactAudioPlayer from 'react-audio-player';
+
 
 
 
@@ -42,13 +44,14 @@ class TrackList extends Component {
         lyrics:"",
         title:"",
         descrip:"",
-        id:"",
+        id:null,
         producer:"",
         covImg:"",
         audFile:"",
         editModal:false,
         voiceMemo:"",
-        recordOpen:false
+        recordOpen:false,
+        recordId:""
  
     }
 
@@ -73,12 +76,28 @@ class TrackList extends Component {
 
     toggleRecorder=(voiceMemo,id)=>{
 
+
+        if(this.state.recordId!==id){
+            this.setState({
+                recordId:id,
+                voiceMemo:voiceMemo,
+                recordOpen:true,
+    
+            })
+
+        }else{
+            this.setState({
+                recordId:id,
+                voiceMemo:voiceMemo,
+                recordOpen: !this.state.recordOpen,
+      
+            })
+    
+        }
+   
+
         
-        this.setState({
-            id:id,
-            voiceMemo:voiceMemo,
-            recordOpen:!this.state.recordOpen
-        })
+
 
     }
 
@@ -123,6 +142,7 @@ class TrackList extends Component {
             )
         }*/
 
+
         return (
             <Container key={1} >
 
@@ -134,7 +154,7 @@ class TrackList extends Component {
                             <CSSTransition key={_id} timeout={500} classNames="fade">
                             <div className="mb-4">
                       
-                                <ListGroupItem  className="d-flex align-items-centeritem">
+                                <ListGroupItem  className="d-flex align-items-center">
                                 
                              
                 
@@ -202,27 +222,47 @@ class TrackList extends Component {
                               
                                  
                                 </ListGroupItem>
-
-                                {this.state.id===_id && (
-                                <Collapse isOpen={this.state.recordOpen}>  
-                                <Card>
+                                <Collapse isOpen={this.state.recordOpen}>
+                   
+                                {this.state.recordId===_id &&(
+                                
+                                
+                                <Card >
                                 <CardBody>
                                 <Recorder
                                     voiceMemo={this.state.voiceMemo}
-                                    id={this.state.id}
+                                    id={this.state.recordId}
                          
                                     />
 
                                 <div className="col-12 d-flex justify-content-center mt-2">
-                                 <ReactAudioPlayer
-                                src={voiceMemo}
-                                controls
-                                />
+                                <AudioPlayer 
+                                    src={voiceMemo}
+                                    volume=".2"
+                                    style={{
+                                        backgroundColor:"white",
+                                        justifyContent:"center",
+                                        outline:"none",
+                                        boxShadow:"none"
+                              
+                                    }}
+                             
+                                    />
+                               
                                 </div>
+                                <Card>
+                                    <CardHeader className=" d-flex justify-content-center">Lyrics</CardHeader>
+                                    <CardBody className=" d-flex justify-content-center">
+                                    {lyrics}
+                                    </CardBody>
+                                </Card>
+                                
+                                
                                 </CardBody>
                                 </Card>
 
-                                </Collapse>)}  
+                                )}  
+                                </Collapse>
                                 
                             </div>
                             </CSSTransition>
@@ -254,6 +294,8 @@ class TrackList extends Component {
                 coverImage={this.state.covImg}
              
                 />
+
+              
                 
 
 

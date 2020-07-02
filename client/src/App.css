@@ -51,6 +51,9 @@ width: 100%;
   .hide-under {
       display: none;
   }
+  .sound-wave{
+    display:none
+  }
 }
 
 
@@ -65,9 +68,12 @@ width: 100%;
   outline: none !important;
   outline-offset: none !important;
   background: black!important;
-
 }
+
+
 
 .item{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
+
+

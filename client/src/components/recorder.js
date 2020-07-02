@@ -49,7 +49,6 @@ class Recorder extends Component{
             }
     
     
-            console.log(data)
             //update item via updateItem action
             this.props.updateItem(data)
 
@@ -68,7 +67,7 @@ class Recorder extends Component{
         return(
             <div>
             
-            <div className="col-12 d-flex justify-content-center mb-1">
+            <div className="d-flex justify-content-center mb-1">
             <ReactMic
             record={this.state.record}
             className="sound-wave"
@@ -76,6 +75,8 @@ class Recorder extends Component{
             strokeColor="black"
             backgroundColor="#ffe3f2" 
             mimeType="audio/webm"/>
+
+        
 
 </div>
 
