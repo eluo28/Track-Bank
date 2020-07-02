@@ -10,6 +10,8 @@ import {
     DropdownMenu,
     DropdownItem,
     Media,
+    Collapse,
+    CardBody, Card
 } from 'reactstrap';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
@@ -23,6 +25,7 @@ import LyricsModal from './lyricsModal';
 import EditModal from './editModal';
 
 import Recorder from './recorder';
+import ReactAudioPlayer from 'react-audio-player';
 
 
 
@@ -44,8 +47,8 @@ class TrackList extends Component {
         covImg:"",
         audFile:"",
         editModal:false,
-        recorder:false,
-        voiceMemo:""
+        voiceMemo:"",
+        recordOpen:false
  
     }
 
@@ -69,10 +72,12 @@ class TrackList extends Component {
     }
 
     toggleRecorder=(voiceMemo,id)=>{
+
+        
         this.setState({
-            recorder:!this.state.recorder,
             id:id,
-            voiceMemo:voiceMemo
+            voiceMemo:voiceMemo,
+            recordOpen:!this.state.recordOpen
         })
 
     }
@@ -121,44 +126,49 @@ class TrackList extends Component {
         return (
             <Container key={1} >
 
-                <ListGroup className="forfooter">
+                <ListGroup className="forfooter" >
                     <TransitionGroup className="track-list">
                         {items.map(({ _id, title, producer, description,coverImage,audioFile,lyrics,voiceMemo}) => (
                          
                             
                             <CSSTransition key={_id} timeout={500} classNames="fade">
-                                <ListGroupItem style={{ backgroundColor: "#2E2E2E", color: "white",border:"none" }} className="d-flex align-items-center mb-2 ">
+                            <div className="mb-4">
+                      
+                                <ListGroupItem  className="d-flex align-items-centeritem">
                                 
-               
-                            
+                             
+                
                                 <Button
                                 className="shadow-none"
-                                style={{backgroundColor:"rgba(0,0,0,0)",border:"none",color:"white"}}
+                                style={{backgroundColor:"rgba(0,0,0,0)",border:"none",color:"black"}}
                                 onClick={this.togglePlayer.bind(this, audioFile,title)}
                                 >
                                     <i className="fas fa-play"></i>
                                 </Button>
 
-                          
+
                               <Media object src={coverImage} className="col-1 hide-under"/>
                                 <div className="col-3  overflow">{title} - {producer}</div>
                                 <div className="col-5  overflow">{description}</div>
 
 
-                            
+                        
 
                             
                                 <Button
                                 className="shadow-none ml-auto col-1"
-                                style={{backgroundColor:"rgba(0,0,0,0)",border:"none",color:"white"}}
+                                style={{backgroundColor:"rgba(0,0,0,0)",border:"none",color:"black"}}
                                 onClick={this.toggleRecorder.bind(this,voiceMemo,_id)}
                                 >
                                     <i class="fas fa-microphone"></i>
                                 </Button>
+
+
+
                         
                                 <Button
                                 className="shadow-none ml-auto col-1"
-                                style={{backgroundColor:"rgba(0,0,0,0)",border:"none",color:"white"}}
+                                style={{backgroundColor:"rgba(0,0,0,0)",border:"none",color:"black"}}
                                 onClick={this.toggleLyrics.bind(this,lyrics,title,_id)}
                                 >
                                     <i className="fas fa-file-alt"></i>
@@ -169,7 +179,7 @@ class TrackList extends Component {
                   
                       
                                 <UncontrolledDropdown className="ml-auto">                      
-                                    <DropdownToggle style={{backgroundColor:"rgba(0,0,0,0)",border:"none"}} className="shadow-none col-1" > 
+                                    <DropdownToggle style={{backgroundColor:"rgba(0,0,0,0)",border:"none",color:"black"}} className="shadow-none col-1" > 
                                     <span>&#8942;</span>   
                                     </DropdownToggle>
                                     <DropdownMenu right>
@@ -188,9 +198,33 @@ class TrackList extends Component {
                               
                                     </DropdownMenu>
                                     </UncontrolledDropdown>
+
+                              
                                  
                                 </ListGroupItem>
+
+                                {this.state.id===_id && (
+                                <Collapse isOpen={this.state.recordOpen}>  
+                                <Card>
+                                <CardBody>
+                                <Recorder
+                                    voiceMemo={this.state.voiceMemo}
+                                    id={this.state.id}
+                         
+                                    />
+
+                                <div className="col-12 d-flex justify-content-center mt-2">
+                                 <ReactAudioPlayer
+                                src={voiceMemo}
+                                controls
+                                />
+                                </div>
+                                </CardBody>
+                                </Card>
+
+                                </Collapse>)}  
                                 
+                            </div>
                             </CSSTransition>
                             
                    
@@ -198,10 +232,10 @@ class TrackList extends Component {
                         
                         }
                     </TransitionGroup>
+                    
                 </ListGroup>
 
-
-                
+              
                 <LyricsModal
                 lyricsModal={this.state.lyricsModal}
                 toggleLyrics={this.toggleLyrics}
@@ -220,6 +254,7 @@ class TrackList extends Component {
                 coverImage={this.state.covImg}
              
                 />
+                
 
 
 
@@ -243,15 +278,6 @@ class TrackList extends Component {
 
 )}
     
-                {this.state.recorder &&(
-                    
-                    
-                    <Recorder
-                    voiceMemo={this.state.voiceMemo}
-                    id={this.state.id}
-                    />
-                )}
-        
         
     
             </Container>

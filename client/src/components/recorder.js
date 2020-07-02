@@ -6,7 +6,7 @@ import {
 import {connect} from 'react-redux';
 import {updateItem} from '../redux/itemActions';
 import { ReactMic } from 'react-mic';
-import ReactAudioPlayer from 'react-audio-player';
+
 
 class Recorder extends Component{
     
@@ -53,7 +53,6 @@ class Recorder extends Component{
             //update item via updateItem action
             this.props.updateItem(data)
 
-
           });
 
         
@@ -67,23 +66,28 @@ class Recorder extends Component{
 
 
         return(
-            <div><ReactMic
+            <div>
+            
+            <div className="col-12 d-flex justify-content-center mb-1">
+            <ReactMic
             record={this.state.record}
             className="sound-wave"
             onStop={this.onStop}
-            strokeColor="#000000"
-            backgroundColor="#FF4081" 
-            mimeType="audio/mp3"/>
-            <Button onClick={this.startRecording} type="button">Start</Button>
-            <Button onClick={this.stopRecording} type="button">Stop</Button>
+            strokeColor="black"
+            backgroundColor="#ffe3f2" 
+            mimeType="audio/webm"/>
+
+</div>
+
+<div className="col-12 d-flex justify-content-center">
+            <Button className="mr-5"onClick={this.startRecording} type="button">Start</Button>
+            <Button  className="ml-5" onClick={this.stopRecording} type="button">Stop</Button>
+            </div>
 
 
             
-            <ReactAudioPlayer
-            src={this.props.voiceMemo}
-            controls
-            />
-    {this.props.voiceMemo}
+           
+
             </div>
         )
 

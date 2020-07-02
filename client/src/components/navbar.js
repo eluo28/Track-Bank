@@ -3,7 +3,6 @@ import{
     Collapse,
     Navbar,
     NavbarToggler,
-    NavbarBrand,
     Nav,
     NavItem,
     NavLink,
@@ -24,17 +23,17 @@ class NavComponent extends Component{
 
 
     render(){
-        return(
+        return( 
             <div>
 
-            <Navbar style={{backgroundColor:"#2E2E2E"}} dark expand="sm" className="mb-5">
+            <Navbar  light expand="sm" className="mb-5">
                 <Container>
-                    <NavbarBrand href="/">Tracks</NavbarBrand>
+                    <div>Track Bank</div>
                     <NavbarToggler onClick={this.toggle}/>
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className = "ml-auto" navbar>
                             <NavItem>
-                                <NavLink href="/">Home</NavLink>
+                                <NavLink href="/">Account</NavLink>
                             </NavItem>
                         </Nav>
                     </Collapse>

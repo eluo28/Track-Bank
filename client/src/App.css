@@ -1,9 +1,15 @@
-html, body, #root {
-  height: 100%;
-  margin: 0;
-  background-color:rgba(0, 0, 0, 0.75);
-}
 
+.main{
+
+background:url("images/background.jpg") center center no-repeat;
+background-size: cover, cover;
+height: 100vh;
+position: absolute;
+top: 0;
+width: 100%;
+
+
+}
 
 .fade-enter{
   opacity:.01;
@@ -60,4 +66,8 @@ html, body, #root {
   outline-offset: none !important;
   background: black!important;
 
+}
+
+.item{
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
