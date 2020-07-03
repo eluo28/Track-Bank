@@ -28,7 +28,7 @@ class NavComponent extends Component{
 
             <Navbar  light expand="sm" className="mb-5">
                 <Container>
-                    <div>Track Bank</div>
+                    <div className="bigger">Track Bank</div>
                     <NavbarToggler onClick={this.toggle}/>
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className = "ml-auto" navbar>

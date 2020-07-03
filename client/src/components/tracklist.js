@@ -15,6 +15,7 @@ import {
     Card,
     CardHeader
 } from 'reactstrap';
+
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
 import { getItems, deleteItem } from '../redux/itemActions';
@@ -144,9 +145,11 @@ class TrackList extends Component {
 
 
         return (
-            <Container key={1} >
 
-                <ListGroup className="forfooter" >
+           
+            <Container key={1}>
+              
+                <ListGroup className="forfooter scroll" id="style-11">
                     <TransitionGroup className="track-list">
                         {items.map(({ _id, title, producer, description,coverImage,audioFile,lyrics,voiceMemo}) => (
                          
@@ -168,8 +171,8 @@ class TrackList extends Component {
 
 
                               <Media object src={coverImage} className="col-1 hide-under"/>
-                                <div className="col-3  overflow">{title} - {producer}</div>
-                                <div className="col-5  overflow">{description}</div>
+                                <div className="col-3  overflow bigger">{title} <div className="smaller"> by {producer}</div></div>
+                                <div className="col-5  overflow medium">{description}</div>
 
 
                         
@@ -323,7 +326,7 @@ class TrackList extends Component {
         
     
             </Container>
-
+    
         );
 
     

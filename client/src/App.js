@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import {Provider} from 'react-redux';
 import store from './redux/store';
 import {Container,Row,Col} from 'reactstrap';
+import Footer from './components/footer';
 
 
 
@@ -24,17 +25,16 @@ function App() {
 <Container>
     <Row 
     style={{marginBottom:'2rem'}}
+    
     >
-
-    <Col xs="1">
-    <ItemModal/>
-    </Col>
-    <Col xs="1">
+<Col xs="1" >
+    <ItemModal />
     </Col>
     </Row>
 
 <Tracklist/>
 </Container>
+<Footer/>
 
     </Provider>
     </div>
