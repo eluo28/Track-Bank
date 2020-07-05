@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Component } from 'react';
 import './App.css';
 import NavComponent from './components/navbar';
 import Tracklist from './components/tracklist';
@@ -9,12 +9,16 @@ import {Provider} from 'react-redux';
 import store from './redux/store';
 import {Container,Row,Col} from 'reactstrap';
 import Footer from './components/footer';
+import {loadUser} from './redux/authActions';
 
 
+class App extends Component{
 
-function App() {
+  componentDidMount(){
+    store.dispatch(loadUser());
+  }
 
-
+  render(){
     return (
 
 
@@ -40,5 +44,5 @@ function App() {
     </div>
   );
 }
-
+}
 export default App;

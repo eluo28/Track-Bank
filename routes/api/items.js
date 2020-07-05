@@ -4,9 +4,7 @@ const AWS = require('aws-sdk');
 const config = require('config');
 const multer=require('multer');
 const multerS3=require('multer-s3')
-//const Grid = require('gridfs-stream');
-//const mongoose = require('mongoose');
-// const auth = require('../../middleware/auth');
+const auth = require('../../middleware/auth');
 
 
 //item model
@@ -60,7 +58,7 @@ router.get('/', (req,res)=>{
 //@route POST api/items
 //@desc create item
 //@access private
-router.post('/',upload.single('audio'),(req,res)=>{
+router.post('/',auth,upload.single('audio'),(req,res)=>{
     
 
 
@@ -86,7 +84,7 @@ router.post('/',upload.single('audio'),(req,res)=>{
 //@desc update item
 //@access private
 
-router.post('/update',(req, res) =>{
+router.post('/update',auth,(req, res) =>{
 
 
   Item.findById(req.body.id)
@@ -130,7 +128,7 @@ router.post('/update',(req, res) =>{
 //@route DELETE api/items/:id
 //@desc delete item
 //@access private
-router.delete('/:id',(req,res)=>{
+router.delete('/:id',auth,(req,res)=>{
 
 
   

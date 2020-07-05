@@ -5,9 +5,10 @@ import{
     NavbarToggler,
     Nav,
     NavItem,
-    NavLink,
     Container
 } from 'reactstrap';
+import RegisterModal from './RegisterModal';
+import Logout from './Logout';
 
 class NavComponent extends Component{
     
@@ -33,7 +34,10 @@ class NavComponent extends Component{
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className = "ml-auto" navbar>
                             <NavItem>
-                                <NavLink href="/">Account</NavLink>
+                                <RegisterModal/>
+                            </NavItem>
+                            <NavItem>
+                                <Logout/>
                             </NavItem>
                         </Nav>
                     </Collapse>
