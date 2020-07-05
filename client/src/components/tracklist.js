@@ -318,7 +318,7 @@ class TrackList extends Component {
                     justifyContent:"center",
                     outline:"none"
                 }}
-                header={this.state.songName}
+      
                 />
 
 )}
