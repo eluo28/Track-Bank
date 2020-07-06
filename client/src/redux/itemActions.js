@@ -1,5 +1,7 @@
 import {GET_ITEMS,ADD_ITEM,DELETE_ITEM,ITEMS_LOADING,UPDATE_ITEM} from './actionTypes';
 import axios from 'axios';
+import {tokenConfig} from './authActions';
+import {returnErrors} from './errorActions';
 
 export const getItems = ()=>dispatch=>{
     dispatch(setItemsLoading());
@@ -10,11 +12,12 @@ export const getItems = ()=>dispatch=>{
                 type:GET_ITEMS,
                 payload:res.data
             }))
+            .catch(err=>dispatch(returnErrors(err.response.data,err.response.status)));
 };
 
 
-export const deleteItem = id =>dispatch=>{
-    axios.delete(`/api/items/${id}`).then(res=>
+export const deleteItem = id =>(dispatch,getState)=>{
+    axios.delete(`/api/items/${id}`,tokenConfig(getState)).then(res=>
             dispatch({
                 type:DELETE_ITEM,
                 payload:id
@@ -22,9 +25,9 @@ export const deleteItem = id =>dispatch=>{
         );
 };
 
-export const addItem = (formData)=>dispatch=>{
+export const addItem = (formData)=>(dispatch,getState)=>{
     axios
-        .post('api/items',formData)
+        .post('api/items',formData,tokenConfig(getState))
         .then(res=>
             dispatch({
             type:ADD_ITEM,
@@ -33,9 +36,9 @@ export const addItem = (formData)=>dispatch=>{
     )
 };
 
-export const updateItem = data=>dispatch=>{
+export const updateItem = data=>(dispatch,getState)=>{
     axios
-        .post('api/items/update',data)
+        .post('api/items/update',data,tokenConfig(getState))
         .then(res=>
             dispatch({
                 type:UPDATE_ITEM,
