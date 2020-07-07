@@ -14,6 +14,9 @@ import {loadUser} from './redux/authActions';
 
 class App extends Component{
 
+
+
+
   componentDidMount(){
     store.dispatch(loadUser());
   }
@@ -45,4 +48,6 @@ class App extends Component{
   );
 }
 }
+
+
 export default App;

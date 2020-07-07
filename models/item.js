@@ -38,6 +38,11 @@ const ItemSchema = new Schema({
     },
     voiceMemo:{
         type:String
+    },
+    userEmail:{
+        type:String,
+        required:true
+        
     }
 
 });

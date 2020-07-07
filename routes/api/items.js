@@ -46,7 +46,7 @@ const upload = multer({
 //@desc Get all items
 //@access public
 router.get('/', (req,res)=>{
-    Item.find()
+    Item.find({userEmail: req.body.userEmail })
         .sort({dateCreated:-1}) 
         .then(items=>res.json(items));
 
@@ -70,7 +70,8 @@ router.post('/',auth,upload.single('audio'),(req,res)=>{
         coverImage:req.body.coverImage,
         audioFile:req.file.location,
         audioFileKey: req.file.originalname,
-        lyrics:req.body.lyrics
+        lyrics:req.body.lyrics,
+        userEmail:req.body.email
     });
 
    

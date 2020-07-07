@@ -36,31 +36,52 @@ import Recorder from './recorder';
 class TrackList extends Component {
 
 
+    constructor(props){
+        super(props);
+        this.state = {
+            file:"",
+            player:false,
+            songName:"",
+            lyricsModal:false,
+            lyrics:"",
+            title:"",
+            descrip:"",
+            id:null,
+            producer:"",
+            covImg:"",
+            audFile:"",
+            editModal:false,
+            voiceMemo:"",
+            recordOpen:false,
+            recordId:"",
+            email:""
+     
+        };
 
-    state = {
-        file:"",
-        player:false,
-        songName:"",
-        lyricsModal:false,
-        lyrics:"",
-        title:"",
-        descrip:"",
-        id:null,
-        producer:"",
-        covImg:"",
-        audFile:"",
-        editModal:false,
-        voiceMemo:"",
-        recordOpen:false,
-        recordId:""
- 
+        
+        
+        
     }
+
+    static propTypes={
+        auth:PropTypes.object.isRequired,
+        getItems: PropTypes.func.isRequired,
+        item: PropTypes.object.isRequired,
+    }
+
+ 
 
 
     componentDidMount() {
+     
         this.props.getItems();
+      
+      
+        
     }
 
+    
+  
 
     onDeleteClick = (id) => {
         this.props.deleteItem(id);
@@ -132,6 +153,8 @@ class TrackList extends Component {
     render() {
         const { items } = this.props.item;
 
+        
+
         /*
         if (this.props.loading){
             return(
@@ -171,8 +194,8 @@ class TrackList extends Component {
 
 
                               <Media object src={coverImage} className="col-1 hide-under"/>
-                                <div className="col-3  overflow bigger">{title} <div className="smaller"> by {producer}</div></div>
-                                <div className="col-5  overflow medium">{description}</div>
+                                <div className="col-md-3  col-8 overflow bigger">{title} <div className="smaller"> by {producer}</div></div>
+                                <div className="col-md-5  hide-under overflow medium">{description}</div>
 
 
                         
@@ -335,16 +358,12 @@ class TrackList extends Component {
 }
 
 
-TrackList.propTypes = {
-    getItems: PropTypes.func.isRequired,
-    item: PropTypes.object.isRequired
-}
-
 
 
 
 const mapStateToProps = (state) => ({
-    item: state.item
+    item: state.item,
+    auth:state.auth
 });
 
 export default connect(mapStateToProps, { getItems, deleteItem })(TrackList);

@@ -11,7 +11,7 @@ import {
 } from 'reactstrap';
 import {connect} from 'react-redux';
 import {addItem} from '../redux/itemActions';
-
+import PropTypes from 'prop-types';
 
 //Filepond
 import {FilePond, registerPlugin} from "react-filepond";
@@ -39,14 +39,25 @@ class ItemModal extends Component{
         producer:'',
         coverImage:'',
         lyrics:'',
-        audioFile:null
+        audioFile:null,
+        email:''
       
     }
 
+
+    static propTypes={
+        auth:PropTypes.object.isRequired
+    }
+
     toggle=()=>{
+        const {user}=this.props.auth;
+
         this.setState({
-            modal:!this.state.modal
+            modal:!this.state.modal,
+            email:user.email
         });
+
+  
     }
 
     onChange=(e)=>{
@@ -58,6 +69,7 @@ class ItemModal extends Component{
 
 
     }
+
 
     onSubmit=(e)=>{
         e.preventDefault();
@@ -71,6 +83,7 @@ class ItemModal extends Component{
         formData.append('producer',this.state.producer)
         formData.append('coverImage',this.state.coverImage)
         formData.append('lyrics',this.state.lyrics)
+        formData.append('email',this.state.email)
         //add item via addItem action
         this.props.addItem(formData)
 
@@ -79,12 +92,16 @@ class ItemModal extends Component{
     }
 
     render(){
+
+      
+        
+
         return(
             <div>
                 <Button style={{backgroundColor:"#2E2E2E",border:"none"}} onClick={this.toggle}>
                 <i class="fas fa-plus"></i>
                 </Button>
-
+    
                 <Modal isOpen={this.state.modal} toggle = {this.toggle}>
                 <ModalHeader toggle = {this.toggle}>Add Track</ModalHeader>
                 <ModalBody>
@@ -171,7 +188,7 @@ class ItemModal extends Component{
 }
 
 const mapStateToProps=state=>({
-    item: state.item
+    auth:state.auth
     
 });
 
