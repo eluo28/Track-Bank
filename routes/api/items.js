@@ -44,11 +44,12 @@ const upload = multer({
 
 //@route GET api/items
 //@desc Get all items
-//@access public
-router.get('/', (req,res)=>{
-    Item.find({userEmail: req.body.userEmail })
+//@access private
+router.get('/',auth,(req,res)=>{
+    Item.find({userID: req.user.id})
         .sort({dateCreated:-1}) 
         .then(items=>res.json(items));
+        
 
 });
 
@@ -71,7 +72,7 @@ router.post('/',auth,upload.single('audio'),(req,res)=>{
         audioFile:req.file.location,
         audioFileKey: req.file.originalname,
         lyrics:req.body.lyrics,
-        userEmail:req.body.email
+        userID:req.user.id
     });
 
    

@@ -11,7 +11,7 @@ import {
 } from 'reactstrap';
 import {connect} from 'react-redux';
 import {addItem} from '../redux/itemActions';
-import PropTypes from 'prop-types';
+
 
 //Filepond
 import {FilePond, registerPlugin} from "react-filepond";
@@ -39,22 +39,17 @@ class ItemModal extends Component{
         producer:'',
         coverImage:'',
         lyrics:'',
-        audioFile:null,
-        email:''
+        audioFile:null
       
     }
 
 
-    static propTypes={
-        auth:PropTypes.object.isRequired
-    }
 
     toggle=()=>{
-        const {user}=this.props.auth;
+
 
         this.setState({
-            modal:!this.state.modal,
-            email:user.email
+            modal:!this.state.modal
         });
 
   

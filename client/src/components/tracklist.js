@@ -53,8 +53,7 @@ class TrackList extends Component {
             editModal:false,
             voiceMemo:"",
             recordOpen:false,
-            recordId:"",
-            email:""
+            recordId:""
      
         };
 
@@ -64,7 +63,6 @@ class TrackList extends Component {
     }
 
     static propTypes={
-        auth:PropTypes.object.isRequired,
         getItems: PropTypes.func.isRequired,
         item: PropTypes.object.isRequired,
     }
@@ -72,8 +70,8 @@ class TrackList extends Component {
  
 
 
-    componentDidMount() {
-     
+    componentDidMount() {   
+
         this.props.getItems();
       
       
@@ -362,8 +360,7 @@ class TrackList extends Component {
 
 
 const mapStateToProps = (state) => ({
-    item: state.item,
-    auth:state.auth
+    item: state.item
 });
 
 export default connect(mapStateToProps, { getItems, deleteItem })(TrackList);

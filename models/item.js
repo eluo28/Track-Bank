@@ -39,7 +39,7 @@ const ItemSchema = new Schema({
     voiceMemo:{
         type:String
     },
-    userEmail:{
+    userID:{
         type:String,
         required:true
         
