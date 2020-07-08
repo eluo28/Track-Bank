@@ -11,7 +11,7 @@ import {
 } from 'reactstrap';
 import {connect} from 'react-redux';
 import {addItem} from '../redux/itemActions';
-
+import PropTypes from 'prop-types';
 
 //Filepond
 import {FilePond, registerPlugin} from "react-filepond";
@@ -43,7 +43,11 @@ class ItemModal extends Component{
       
     }
 
+    static propTypes={
+        addItems: PropTypes.func.isRequired
+    }
 
+  
 
     toggle=()=>{
 
@@ -92,88 +96,99 @@ class ItemModal extends Component{
         
 
         return(
+
+
+      
+
+         
             <div>
-                <Button style={{backgroundColor:"#2E2E2E",border:"none"}} onClick={this.toggle}>
-                <i class="fas fa-plus"></i>
-                </Button>
-    
-                <Modal isOpen={this.state.modal} toggle = {this.toggle}>
-                <ModalHeader toggle = {this.toggle}>Add Track</ModalHeader>
-                <ModalBody>
-                    <Form onSubmit={this.onSubmit}>
-                        <FormGroup>
+            <Button style={{backgroundColor:"#2E2E2E",border:"none"}} onClick={this.toggle}>
+            <i class="fas fa-plus"></i>
+            </Button>
 
-                        <Label for="title">Title</Label>
-                            <Input required type="text" name="title" id="title" placeholder="Title" onChange={this.onChange}></Input>
-                            <Label for="producer" className="mt-4">Producer</Label>
-                            
-                            <Input required type="text" name="producer" id="producer"placeholder="Producer" onChange={this.onChange}></Input>
-                            
-                            <Label for="description" className="mt-4">Description</Label>
-                            <Input required type="text" name="description" id="description"  placeholder="Description" onChange={this.onChange}></Input>
-                            <Label for="lyrics" className="mt-4">Lyrics</Label>
-                            <Input type="text" name="lyrics" id="lyrics"placeholder="Lyrics" onChange={this.onChange}></Input>
-                     
-                            <FilePond
+            <Modal isOpen={this.state.modal} toggle = {this.toggle}>
+            <ModalHeader toggle = {this.toggle}>Add Track</ModalHeader>
+            <ModalBody>
+                <Form onSubmit={this.onSubmit}>
+                    <FormGroup>
 
-                            maxFiles={1}
-                            imageResizeTargetWidth="75"
-                            imageResizeTargetHeight="75"
-                            allowMultiple={false}
-                            className="mt-4"
-                            name="coverImage"
-                            acceptedFileTypes={['image/*']}
-                            imageResizeMode="force"
-                            required
-                            
-                            onaddfile={(err,item)=>{
-                                if (err) {
-                                    console.warn(err);
-                                    return;
-                                }
+                    <Label for="title">Title</Label>
+                        <Input required type="text" name="title" id="title" placeholder="Title" onChange={this.onChange}></Input>
+                        <Label for="producer" className="mt-4">Producer</Label>
+                        
+                        <Input required type="text" name="producer" id="producer"placeholder="Producer" onChange={this.onChange}></Input>
+                        
+                        <Label for="description" className="mt-4">Description</Label>
+                        <Input required type="text" name="description" id="description"  placeholder="Description" onChange={this.onChange}></Input>
+                        <Label for="lyrics" className="mt-4">Lyrics</Label>
+                        <Input type="text" name="lyrics" id="lyrics"placeholder="Lyrics" onChange={this.onChange}></Input>
+                 
+                        <FilePond
 
-                                    this.setState({
-                                        coverImage: item.getFileEncodeDataURL()
-    
-                                        });
-                                }}
+                        maxFiles={1}
+                        imageResizeTargetWidth="75"
+                        imageResizeTargetHeight="75"
+                        allowMultiple={false}
+                        className="mt-4"
+                        name="coverImage"
+                        acceptedFileTypes={['image/*']}
+                        imageResizeMode="force"
+                        required
+                        
+                        onaddfile={(err,item)=>{
+                            if (err) {
+                                console.warn(err);
+                                return;
+                            }
 
-
-                            labelIdle="COVER ART"
-                            
-                            />
-
-
-                            <FilePond
-                            maxFiles={1}
-                            allowMultiple={false}
-                            className="mt-3"
-                            acceptedFileTypes={['audio/*']}
-                            required
-
-                            onaddfile={(err,item)=>{
-                                if (err) {
-                                    console.warn(err);
-                                    return;
-                                }
                                 this.setState({
-                                    audioFile: item.file
+                                    coverImage: item.getFileEncodeDataURL()
 
                                     });
-                                }}
-                            labelIdle="BEAT"
-
-                            />
+                            }}
 
 
-                            <Button color="dark" style={{marginTop:'2rem'}}  block>Add Track</Button>
-              
-                        </FormGroup>
-                    </Form>
-                </ModalBody>
-                </Modal>
+                        labelIdle="COVER ART"
+                        
+                        />
 
-            </div>
+
+                        <FilePond
+                        maxFiles={1}
+                        allowMultiple={false}
+                        className="mt-3"
+                        acceptedFileTypes={['audio/*']}
+                        required
+
+                        onaddfile={(err,item)=>{
+                            if (err) {
+                                console.warn(err);
+                                return;
+                            }
+                            this.setState({
+                                audioFile: item.file
+
+                                });
+                            }}
+                        labelIdle="BEAT"
+
+                        />
+
+
+                        <Button color="dark" style={{marginTop:'2rem'}}  block>Add Track</Button>
+          
+                    </FormGroup>
+                </Form>
+            </ModalBody>
+            </Modal>
+
+        </div>
+        
+               
+
+
+
+            
 
 
         )
@@ -183,7 +198,7 @@ class ItemModal extends Component{
 }
 
 const mapStateToProps=state=>({
-    auth:state.auth
+    isAuthenticated:state.auth.isAuthenticated
     
 });
 

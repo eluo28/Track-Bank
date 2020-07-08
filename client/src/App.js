@@ -1,13 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
 import NavComponent from './components/navbar';
-import Tracklist from './components/tracklist';
-import ItemModal from './components/itemModal';
+
 
 import 'bootstrap/dist/css/bootstrap.min.css';
 import {Provider} from 'react-redux';
 import store from './redux/store';
-import {Container,Row,Col} from 'reactstrap';
+import MainBody from './components/MainBody';
 import Footer from './components/footer';
 import {loadUser} from './redux/authActions';
 
@@ -28,19 +27,8 @@ class App extends Component{
       <div className="main">
     <Provider store={store}>
       <NavComponent/>
+<MainBody/>
 
-<Container>
-    <Row 
-    style={{marginBottom:'2rem'}}
-    
-    >
-<Col xs="1" >
-    <ItemModal />
-    </Col>
-    </Row>
-
-<Tracklist/>
-</Container>
 <Footer/>
 
     </Provider>
@@ -48,6 +36,7 @@ class App extends Component{
   );
 }
 }
+
 
 
 export default App;

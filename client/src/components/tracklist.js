@@ -22,6 +22,7 @@ import { getItems, deleteItem } from '../redux/itemActions';
 import PropTypes from 'prop-types';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
+
 //import {Loading } from './loading';
 
 import LyricsModal from './lyricsModal';
@@ -64,7 +65,7 @@ class TrackList extends Component {
 
     static propTypes={
         getItems: PropTypes.func.isRequired,
-        item: PropTypes.object.isRequired,
+        item: PropTypes.object.isRequired
     }
 
  
@@ -167,8 +168,9 @@ class TrackList extends Component {
 
         return (
 
-           
-            <Container key={1}>
+       
+
+                <Container key={1}>
               
                 <ListGroup className="forfooter scroll" id="style-11">
                     <TransitionGroup className="track-list">
@@ -347,6 +349,11 @@ class TrackList extends Component {
         
     
             </Container>
+
+         
+
+           
+            
     
         );
 
