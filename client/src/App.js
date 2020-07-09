@@ -24,7 +24,7 @@ class App extends Component{
     return (
 
 
-      <div className="main">
+      <div >
     <Provider store={store}>
       <NavComponent/>
 <MainBody/>

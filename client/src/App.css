@@ -1,16 +1,18 @@
 
-.main{
+body{
 
-background:url("images/background.jpg") center center no-repeat;
-background-size: cover, cover;
+background-image:url("images/background.jpg");
+background-size: cover;
 height: 100vh;
+margin:0;
+padding:0;
 background-attachment: fixed;
-top: 0;
-width: 100%;
 font-family: 'Quicksand', sans-serif;
 
-  background-position: center center;
+background-position: center center;
 }
+
+
 
 .fade-enter{
   opacity:.01;

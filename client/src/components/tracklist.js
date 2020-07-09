@@ -186,7 +186,7 @@ class TrackList extends Component {
 
                               <Media object src={coverImage} className="col-1 hide-under"/>
                                 <div className="col-md-3  col-8 overflow bigger">{title} <div className="smaller"> by {producer}</div></div>
-                                <div className="col-md-5  hide-under overflow medium">{description}</div>
+                                <div className="col-md-5  hide-under overflow ">{description}</div>
 
 
                         
@@ -364,8 +364,7 @@ class TrackList extends Component {
 
 
 const mapStateToProps = (state) => ({
-    item: state.item,
-    loading:state.auth.isLoading
+    item: state.item
 });
 
 export default connect(mapStateToProps, { getItems, deleteItem })(TrackList);
