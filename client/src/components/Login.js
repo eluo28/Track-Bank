@@ -89,7 +89,7 @@ class LoginModal extends Component{
     render(){
         return(
             <div>
-                <NavLink onClick={this.toggle} href="#">
+                <NavLink onClick={this.toggle} href="# " className="bigger">
                     Login
                 </NavLink>
 

@@ -11,10 +11,11 @@ import {
     DropdownItem,
     Media,
     Collapse,
-    CardBody,
     Card,
+    CardBody,
     CardHeader
 } from 'reactstrap';
+import TextareaAutosize from 'react-autosize-textarea';
 
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import { connect } from 'react-redux';
@@ -23,7 +24,6 @@ import PropTypes from 'prop-types';
 import AudioPlayer from 'react-h5-audio-player';
 import 'react-h5-audio-player/lib/styles.css';
 
-//import {Loading } from './loading';
 
 import LyricsModal from './lyricsModal';
 import EditModal from './editModal';
@@ -154,23 +154,14 @@ class TrackList extends Component {
 
         
 
-        /*
-        if (this.props.loading){
-            return(
-                <div className="container">
-                    <div className="row loadingPad forfooter text-center">
-                    <Loading/>
-                    </div>
-                </div>
-            )
-        }*/
+   
 
 
         return (
 
        
 
-                <Container key={1}>
+                <Container key={1} className="size">
               
                 <ListGroup className="forfooter scroll" id="style-11">
                     <TransitionGroup className="track-list">
@@ -278,9 +269,15 @@ class TrackList extends Component {
                                 </div>
                                 <Card>
                                     <CardHeader className=" d-flex justify-content-center">Lyrics</CardHeader>
-                                    <CardBody className=" d-flex justify-content-center">
-                                    {lyrics}
-                                    </CardBody>
+                                    
+                                 
+                                    <TextareaAutosize className="text-center" value={lyrics} disabled>
+                        
+                                    </TextareaAutosize>
+
+                
+                             
+                                    
                                 </Card>
                                 
                                 
@@ -367,7 +364,8 @@ class TrackList extends Component {
 
 
 const mapStateToProps = (state) => ({
-    item: state.item
+    item: state.item,
+    loading:state.auth.isLoading
 });
 
 export default connect(mapStateToProps, { getItems, deleteItem })(TrackList);

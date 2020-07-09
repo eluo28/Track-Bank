@@ -63,7 +63,7 @@ class NavComponent extends Component{
             <Navbar  light expand="sm" className="mb-5">
                 <Container>
                     <div className="bigger">Track Bank</div>
-                    <NavbarToggler onClick={this.toggle}/>
+                    <NavbarToggler onClick={this.toggle} style={{border:"none",outline:"none"}} />
                     <Collapse isOpen={this.state.isOpen} navbar>
                         <Nav className = "ml-auto" navbar>
                             {isAuthenticated ?authLinks:guestLinks}

@@ -4,12 +4,12 @@
 background:url("images/background.jpg") center center no-repeat;
 background-size: cover, cover;
 height: 100vh;
-position: absolute;
+background-attachment: fixed;
 top: 0;
 width: 100%;
 font-family: 'Quicksand', sans-serif;
 
-
+  background-position: center center;
 }
 
 .fade-enter{
@@ -30,6 +30,7 @@ font-family: 'Quicksand', sans-serif;
   opacity:.01;
   transition: opacity 1000ms ease-in;
 }
+
 
 .red{
   background-color:red;
@@ -55,7 +56,20 @@ font-family: 'Quicksand', sans-serif;
   .sound-wave{
     display:none
   }
+  .padding{
+    padding-top: 40%;
+  }
+
+  
 }
+
+@media only screen and (min-width: 1026px) {
+  .padding{
+    padding-top: 20%;
+  }
+}
+
+
 
 
 .sticky{
@@ -88,18 +102,31 @@ font-family: 'Quicksand', sans-serif;
 
 
 
+.navbar-toggler-icon:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+
+
 .item{
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 
-.scroll{
-  height: calc(100vh - 228px);
-
-  overflow:scroll;
-  overflow-x: hidden;
+.forfooter{
+  height: calc(100vh - 160px);
 }
+
 .size{
   height: calc(100vh - 228px);
+}
+
+
+.scroll{
+
+  height: calc(100vh - 268px);
+  overflow:scroll;
+  overflow-x: hidden;
 }
 
 
@@ -112,6 +139,7 @@ font-family: 'Quicksand', sans-serif;
   
 
 }
+
 
 #style-11::-webkit-scrollbar-thumb {
   border-radius: 10px;

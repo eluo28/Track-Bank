@@ -86,7 +86,7 @@ class LyricsModal extends Component{
     
                         
                                     <Label for="newLyrics">Lyrics</Label>
-                                    <Input required  rows="20" type="textarea" name="newLyrics" id="newLyrics" defaultValue={this.props.lyrics} onChange={this.onChange}></Input>
+                                    <Input required  rows="23" type="textarea" name="newLyrics" id="newLyrics" defaultValue={this.props.lyrics} onChange={this.onChange}></Input>
                                    
     
                                         <Button color="dark" style={{marginTop:'2rem'}}  block>Save</Button>

@@ -114,14 +114,14 @@ class ItemModal extends Component{
 
                     <Label for="title">Title</Label>
                         <Input required type="text" name="title" id="title" placeholder="Title" onChange={this.onChange}></Input>
-                        <Label for="producer" className="mt-4">Producer</Label>
+                        <Label for="producer" className="mt-3">Producer</Label>
                         
                         <Input required type="text" name="producer" id="producer"placeholder="Producer" onChange={this.onChange}></Input>
                         
-                        <Label for="description" className="mt-4">Description</Label>
-                        <Input required type="text" name="description" id="description"  placeholder="Description" onChange={this.onChange}></Input>
-                        <Label for="lyrics" className="mt-4">Lyrics</Label>
-                        <Input type="text" name="lyrics" id="lyrics"placeholder="Lyrics" onChange={this.onChange}></Input>
+                        <Label for="description" className="mt-3">Description</Label>
+                        <Input required type="textarea" name="description" id="description"  rows="4" placeholder="Description" onChange={this.onChange}></Input>
+                        <Label for="lyrics" className="mt-3">Lyrics (Optional)</Label>
+                        <Input type="textarea" name="lyrics" id="lyrics"placeholder="Lyrics" onChange={this.onChange}></Input>
                  
                         <FilePond
 

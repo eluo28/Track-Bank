@@ -5,6 +5,7 @@ import PropTypes from 'prop-types';
 import Tracklist from './tracklist';
 import ItemModal from './itemModal';
 import {Container,Row,Col} from 'reactstrap';
+import {Loading } from './loading';
 
 class MainBody extends Component{
 
@@ -17,7 +18,16 @@ class MainBody extends Component{
     
     render(){
 
-      
+           
+        if (this.props.loading){
+            return(
+                <div className="container">
+                    <div className="row loadingPad forfooter padding text-center">
+                    <Loading/>
+                    </div>
+                </div>
+            )
+        }
         
 
         return(
@@ -43,7 +53,15 @@ class MainBody extends Component{
                     </div>
                     :
                     
-                    <div>Login</div>
+                    <div className="forfooter col-12 offset-md-3 padding">
+
+                    
+
+                    <h1>WELCOME TO TRACK BANK</h1>
+                    <h6>A haven for YOUR musical concepts.</h6>
+
+
+                    </div>
                 }
 
             
@@ -64,7 +82,8 @@ class MainBody extends Component{
 }
 
 const mapStateToProps=state=>({
-    isAuthenticated:state.auth.isAuthenticated
+    isAuthenticated:state.auth.isAuthenticated,
+    loading:state.auth.isLoading
     
 });
 
