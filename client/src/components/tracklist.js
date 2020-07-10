@@ -226,7 +226,7 @@ class TrackList extends Component {
                                         Edit
                                         </DropdownItem>
 
-                                        <DropdownItem className="d-flex justify-content-center"
+                                        <DropdownItem className="d-flex justify-content-center test"
                                         style={{outline:"none"}}
                                         onClick={this.onDeleteClick.bind(this, _id)}
                                         >
