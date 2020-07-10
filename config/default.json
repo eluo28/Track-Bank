@@ -1,6 +1,0 @@
-{
-    "mongoURI": "mongodb+srv://eluo28:koala28*@sstudio-cej3e.mongodb.net/test",
-    "jwtSecret": "myJwtSecret",
-    "AWS_ACCESS_KEY_ID":"AKIAILKDRGMX7EUJYGCA",
-    "AWS_SECRET_ACCESS_KEY":"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"
-  }
